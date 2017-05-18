@@ -6,4 +6,6 @@ comment2.params=event
 comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment3.params=
 comment3.target=java.lang.String\ randomNum()
-numComments=4
+comment4.params=
+comment4.target=java.lang.String\ passWord()
+numComments=5
