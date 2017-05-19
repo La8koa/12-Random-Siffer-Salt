@@ -18,8 +18,9 @@ public class RandomString {
     private final Random random = new Random();
 
     private final char[] buf;
-
-    public RandomString(int length) {
+    private int length;
+    public RandomString() {
+        length = 15;
         if (length < 1)
             throw new IllegalArgumentException("length < 1: " + length);
         buf = new char[length];

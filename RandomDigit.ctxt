@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=RandomDigit
+comment0.text=\r\n\ @author\ Nj\u00E5l\ Henriksen\ La8koa(at)gmail.com\r\n\ @version\ v3\ beta\ \r\n
+comment1.params=
+comment1.target=java.lang.String\ randomNum()
+comment2.params=
+comment2.target=int\ ranDigit()
+numComments=3
