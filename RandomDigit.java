@@ -5,11 +5,13 @@ import java.util.Random;
  */
 public class RandomDigit
 {
-    private String twelveDigit;
+    private String twelveDigitStr;
+    private long checkPrimeNr;
+    private boolean isPrime;
     private int randomNumInt1;
     private int randomNumInt2;
     private int randomNumInt3;
-    private int randFourDigit;
+    private int digit;
 
     public String randomNum()
     {
@@ -19,19 +21,39 @@ public class RandomDigit
         String rdnr2 = Integer.toString(randomNumInt2);
         randomNumInt3 = ranDigit();
         String rdnr3 = Integer.toString(randomNumInt3);
+
+        twelveDigitStr = rdnr1 + rdnr2 + rdnr3;
+        checkPrimeNr = Long.parseLong(twelveDigitStr);
+        if(this.isPrime(checkPrimeNr)== true){
+            return "Prime number occurred, try again!";
+        }
+
         return rdnr1 + "-" + rdnr2 + "-"+ rdnr3;
     }
 
     public int ranDigit()
     {
         Random RandInt = new Random();
-        int digit = RandInt.nextInt(9999);
-        int length = (int) Math.log10(digit) + 1;
-        if(length != 4)
-        {
-            digit = RandInt.nextInt(9999);
-        }
+        digit = RandInt.nextInt(9999-1000)+1000;
         return digit;
     }
 
+    public boolean isPrime(long checkPrime) {
+        long n = checkPrimeNr;
+        // fast even test.
+        if(n > 2 && (checkPrime & 1) == 0){
+            isPrime = false;
+            return false;
+        }
+
+        // only odd factors need to be tested up to n^0.5
+        for(long i = 3; i * i <= n; i += 2)
+            if (n % i == 0) {
+                isPrime = false;
+                return false;
+            }else{
+                isPrime = true;
+            }
+        return true;
+    }
 }

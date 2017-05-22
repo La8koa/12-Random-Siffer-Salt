@@ -14,6 +14,7 @@ public class KeyGenerator extends JFrame implements ActionListener
     private JLabel JlabKey;
     private JLabel JlabPw;
     private JLabel Jlabauth;
+    private String StrTittle;
 
     public KeyGenerator() 
     {
@@ -23,7 +24,7 @@ public class KeyGenerator extends JFrame implements ActionListener
         JPanel pnlExit = new JPanel(new GridLayout(2, 2));
         //instruction on how the program are working on top
 
-        Jlabinst = new JLabel("Instructions");  
+        Jlabinst = new JLabel(tittle());  
         pnlInstr.add(Jlabinst);
         add(pnlInstr, BorderLayout.NORTH);
 
@@ -94,4 +95,14 @@ public class KeyGenerator extends JFrame implements ActionListener
         }
     }
 
+    
+    public String tittle(){
+    
+        return  
+        "<html><h1>Key Generator</h1>" + 
+        "<h2>Instructions: </h2><p>Alot of text<p> " + 
+        "Open source, free license<p>Contact: la8koa(at)gmail.com<p><p></html>";
+    
+    
+    }
 }
