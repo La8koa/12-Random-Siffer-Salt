@@ -4,6 +4,8 @@ import javax.swing.*;
 import static javax.swing.JOptionPane.*;
 import java.util.Random;
 import java.util.ArrayList;
+import java.awt.datatransfer.*;
+import java.awt.Toolkit;
 
 public class KeyGenerator extends JFrame implements ActionListener
 {
@@ -15,8 +17,9 @@ public class KeyGenerator extends JFrame implements ActionListener
     private JLabel JlabPw;
     private JLabel Jlabauth;
     private String StrTittle;
+    private String CopyStr;
 
-    public KeyGenerator() 
+    public KeyGenerator()
     {
         setTitle("Random Key and PassWord generator");
         JPanel pnlInstr = new JPanel(new GridLayout(1, 1));
@@ -24,7 +27,7 @@ public class KeyGenerator extends JFrame implements ActionListener
         JPanel pnlExit = new JPanel(new GridLayout(2, 2));
         //instruction on how the program are working on top
 
-        Jlabinst = new JLabel(tittle());  
+        Jlabinst = new JLabel(Instructions.tittle());  
         pnlInstr.add(Jlabinst);
         add(pnlInstr, BorderLayout.NORTH);
 
@@ -43,6 +46,8 @@ public class KeyGenerator extends JFrame implements ActionListener
 
         btnGenNewKey.addActionListener(this);
         btnGenPw.addActionListener(this);
+        btnCopyNr.addActionListener(this);
+        btnCopyPw.addActionListener(this);
 
         pnlDisplayControll.add(JlabKey);
         pnlDisplayControll.add(RandomNrTxtField);
@@ -74,35 +79,49 @@ public class KeyGenerator extends JFrame implements ActionListener
         JButton clicked = (JButton) event.getSource();
         String klikk = clicked.getText();
         RandomDigit RandDigit = new RandomDigit();
-        RandomString RandStr = new RandomString();
+        PassWord RandStr = new PassWord();
 
         switch(klikk)
         {
             case "Exit" : System.exit(0);
             break;
+
             case "Clear all" : 
             RandomNrTxtField.setText(""); //Clear out the feld
             pWTxtField.setText(""); //Clear out the feld
             break;
+
             case "New Key" : 
             RandomNrTxtField.setText("");//Clear out the feld
             RandomNrTxtField.setText(RandDigit.randomNum());  //Set new key
             break;
+
             case "New PassWord" :
             pWTxtField.setText("");
             pWTxtField.setText(RandStr.nextString());
+            break;
 
+            case "Copy pw" :
+            CopyStr = pWTxtField.getText();
+            copyToClipboard(CopyStr);
+            break;
+
+            case "Copy Nr" :
+            CopyStr = RandomNrTxtField.getText();
+            copyToClipboard(CopyStr);
+            break;
         }
     }
 
+    public void copyToClipboard(String CopyStr){
+        String clip = CopyStr;
+        StringSelection stringSelection = new StringSelection(clip);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(stringSelection, null);
+        showMessageDialog(this, "Kopiert til utklippstavlen");
+    }
     
-    public String tittle(){
-    
-        return  
-        "<html><h1>Key Generator</h1>" + 
-        "<h2>Instructions: </h2><p>Alot of text<p> " + 
-        "Open source, free license<p>Contact: la8koa(at)gmail.com<p><p></html>";
-    
-    
+    public static void main(String[] args) {
+        KeyGenerator key = new KeyGenerator();
     }
 }

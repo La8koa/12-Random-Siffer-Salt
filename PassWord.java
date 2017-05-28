@@ -1,48 +1,38 @@
+import java.util.Random;
+/*
+stolen from stackoverflow   
+*/
+public class PassWord {
 
-/**
- * Write a description of class PassWord here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class PassWord
-{
-    
-    private static final String ALPHA_CAPS  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private static final String ALPHA   = "abcdefghijklmnopqrstuvwxyz";
-    private static final String NUM     = "0123456789";
-    private static final String SPL_CHARS   = "!@#$%^&*_=+-/";
-    
-    char[] pswd = new char[15];
-    
-    
-    
-    /**
-     * Constructor for objects of class PassWord
-     */
-    public PassWord()
-    {
-        
-        
+    private static final char[] symbols;
+
+    static {
+        StringBuilder tmp = new StringBuilder();
+        for (char ch = '0'; ch <= '9'; ++ch)
+            tmp.append(ch);
+        for (char ch = 'a'; ch <= 'z'; ++ch)
+            tmp.append(ch);
+        for (char ch = 'A'; ch <= 'Z'; ++ch)
+            tmp.append(ch);
+        for (char ch = '!'; ch <= '.'; ++ch)
+            tmp.append(ch);
+        symbols = tmp.toString().toCharArray();
+    }   
+
+    private final Random random = new Random();
+
+    private final char[] buf;
+    private int length;
+    public PassWord() {
+        length = 15;
+        if (length < 1)
+            throw new IllegalArgumentException("length < 1: " + length);
+        buf = new char[length];
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
-    
-    
-    public String passWord(){
-
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
-        //String pwd = RandomStringUtils.random( 15, characters );
-        return characters;
+    public String nextString() {
+        for (int idx = 0; idx < buf.length; ++idx) 
+            buf[idx] = symbols[random.nextInt(symbols.length)];
+        return new String(buf);
     }
 }

@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=RandomString
-comment0.text=\r\nstolen\ from\ stackoverflow\ \ \ \r\n
-comment1.params=
-comment1.target=RandomString()
-comment2.params=
-comment2.target=java.lang.String\ nextString()
-numComments=3

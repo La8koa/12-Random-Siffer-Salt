@@ -10,10 +10,10 @@ public class Instructions
 
     
     
-    /**
-     * Constructor for objects of class Instructions
-     */
-    public Instructions()
+    
+    public Instructions(){}
+    
+    /*
     {
 
         ArrayList<String> InstruArrLi = new ArrayList<String>();
@@ -26,12 +26,21 @@ public class Instructions
         
         
         for (int i = 0; i < InstruArrLi.size(); i++) {
-            return InstruArrLi.get(i);
-            String 
+            return InstruArrLi.get<i>;
+            
 
 
         }
     }
+    */
 
+    
+    public static String tittle(){
+        return  
+        "<html><h1>Key and password Generator</h1>" + 
+        "<h2>Instructions: </h2><p>Alot of text<p> " + 
+        "Open source, free license<p>Contact: la8koa(at)gmail.com<p><p></html>";
 
+    }
+    
 }

@@ -31,14 +31,14 @@ public class RandomDigit
         return rdnr1 + "-" + rdnr2 + "-"+ rdnr3;
     }
 
-    public int ranDigit()
+    private int ranDigit()
     {
         Random RandInt = new Random();
         digit = RandInt.nextInt(9999-1000)+1000;
         return digit;
     }
 
-    public boolean isPrime(long checkPrime) {
+    private boolean isPrime(long checkPrime) {
         long n = checkPrimeNr;
         // fast even test.
         if(n > 2 && (checkPrime & 1) == 0){
