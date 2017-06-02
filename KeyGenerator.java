@@ -22,7 +22,9 @@ public class KeyGenerator extends JFrame implements ActionListener
     private Integer[] keySize = {4, 8, 12, 16};
     private JComboBox<Integer> cmbKeySize;
     private JComboBox<Integer> cmbPwSize;
-    
+    private int cmbKeyInt;
+    private int cmbPwInt;
+
     public KeyGenerator()
     {
         setTitle("Random Key and PassWord generator");
@@ -67,8 +69,21 @@ public class KeyGenerator extends JFrame implements ActionListener
         btnCopyNr.addActionListener(this);
         btnCopyPw.addActionListener(this);
 
-        cmbKeySize.addActionListener(this);
-        cmbPwSize.addActionListener(this);
+        cmbKeySize.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent event) {
+                    Object source = event.getSource();
+                    cmbKeyInt = cmbKeySize.getSelectedIndex();
+                }
+            }
+        );
+        
+        cmbPwSize.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent event) {
+                    Object source = event.getSource();
+                    cmbPwInt = cmbPwSize.getSelectedIndex();
+                }
+            }
+        );
 
         pnlDisplayControll.add(JlabKey);
         pnlDisplayControll.add(cmbKeySize);
@@ -92,21 +107,21 @@ public class KeyGenerator extends JFrame implements ActionListener
         btnexit.addActionListener(this);
 
         pack();
+
         setVisible(true);
         //setSize(400,300);
         //setResizeable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        }
+    }
 
-        public void actionPerformed(ActionEvent event)
-        {
+    public void actionPerformed(ActionEvent event)
+    {
         JButton clicked = (JButton) event.getSource();
         //Error same Actionlistener on Jbutton and Jcombobox. 
-        Object source = event.getSource();
+        //Object source = event.getSource();
         String klikk = clicked.getText();
-        RandomDigit RandDigit = new RandomDigit(cmbKeySize.getSelectedIndex());
-        PassWord RandStr = new PassWord(cmbPwSize.getSelectedIndex());
-
+        RandomDigit RandDigit = new RandomDigit(cmbKeyInt);
+        PassWord RandStr = new PassWord(cmbPwInt);
 
         switch(klikk)
         {
