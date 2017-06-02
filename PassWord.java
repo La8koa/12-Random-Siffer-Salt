@@ -23,13 +23,26 @@ public class PassWord {
 
     private final char[] buf;
     private int length;
-    public PassWord() {
-        length = 15;
+
+    public PassWord(int index) {
+        //length = 16;
+        switch(index){
+            case 0:
+            length = 12;
+            break;
+            case 1:
+            length = 16;
+            break;
+            case 2:
+            length = 20;
+            break;
+        }
+        
         if (length < 1)
             throw new IllegalArgumentException("length < 1: " + length);
         buf = new char[length];
     }
-
+    
     public String nextString() {
         for (int idx = 0; idx < buf.length; ++idx) 
             buf[idx] = symbols[random.nextInt(symbols.length)];

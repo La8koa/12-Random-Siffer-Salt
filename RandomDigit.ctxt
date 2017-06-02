@@ -1,10 +1,14 @@
 #BlueJ class context
 comment0.target=RandomDigit
 comment0.text=\r\n\ @author\ Nj\u00E5l\ Henriksen\ La8koa(at)gmail.com\r\n\ @version\ v3\ beta\ \r\n
-comment1.params=
-comment1.target=java.lang.String\ randomNum()
+comment1.params=index
+comment1.target=RandomDigit(int)
 comment2.params=
-comment2.target=int\ ranDigit()
-comment3.params=checkPrime
-comment3.target=boolean\ isPrime(long)
-numComments=4
+comment2.target=java.lang.String\ randomNum()
+comment3.params=
+comment3.target=int\ ranDigit()
+comment4.params=checkPrime
+comment4.target=boolean\ isPrime(long)
+comment5.params=
+comment5.target=java.lang.String\ copyNrToClip()
+numComments=6

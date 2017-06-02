@@ -18,12 +18,19 @@ public class KeyGenerator extends JFrame implements ActionListener
     private JLabel Jlabauth;
     private String StrTittle;
     private String CopyStr;
-
+    private Integer[] pwSize = {12, 16, 20};
+    private Integer[] keySize = {4, 8, 12, 16};
+    private JComboBox<Integer> cmbKeySize;
+    private JComboBox<Integer> cmbPwSize;
+    
     public KeyGenerator()
     {
         setTitle("Random Key and PassWord generator");
+        //JMenuBar mnuBar = new JMenuBar();
+        //setJMenuBar(mnuBar);
+
         JPanel pnlInstr = new JPanel(new GridLayout(1, 1));
-        JPanel pnlDisplayControll = new JPanel(new GridLayout(2, 4));
+        JPanel pnlDisplayControll = new JPanel(new GridLayout(2, 5));
         JPanel pnlExit = new JPanel(new GridLayout(2, 2));
         //instruction on how the program are working on top
 
@@ -38,22 +45,38 @@ public class KeyGenerator extends JFrame implements ActionListener
         btnCopyNr = new JButton("Copy Nr");
         btnCopyPw = new JButton("Copy pw");
 
+        //Label for digit
         JlabKey = new JLabel("Twelve digit key: ");
-        RandomNrTxtField = new JTextField(15);
+        RandomNrTxtField = new JTextField(28);
 
+        //Label for password
         JlabPw = new JLabel("Strong PassWord: ");
-        pWTxtField = new JTextField(15);
+        pWTxtField = new JTextField(25);
+
+        //how long the digit could get
+        cmbKeySize = new JComboBox<Integer>(keySize);
+        cmbKeySize.setMaximumRowCount(4);
+        cmbKeySize.setSelectedIndex(2);
+
+        cmbPwSize = new JComboBox<Integer>(pwSize);
+        cmbPwSize.setMaximumRowCount(4);
+        cmbPwSize.setSelectedIndex(1);
 
         btnGenNewKey.addActionListener(this);
         btnGenPw.addActionListener(this);
         btnCopyNr.addActionListener(this);
         btnCopyPw.addActionListener(this);
 
+        cmbKeySize.addActionListener(this);
+        cmbPwSize.addActionListener(this);
+
         pnlDisplayControll.add(JlabKey);
+        pnlDisplayControll.add(cmbKeySize);
         pnlDisplayControll.add(RandomNrTxtField);
         pnlDisplayControll.add(btnGenNewKey);
         pnlDisplayControll.add(btnCopyNr);
         pnlDisplayControll.add(JlabPw);
+        pnlDisplayControll.add(cmbPwSize);
         pnlDisplayControll.add(pWTxtField);
         pnlDisplayControll.add(btnGenPw);
         pnlDisplayControll.add(btnCopyPw);
@@ -71,15 +94,19 @@ public class KeyGenerator extends JFrame implements ActionListener
         pack();
         setVisible(true);
         //setSize(400,300);
+        //setResizeable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+        }
 
-    public void actionPerformed(ActionEvent event)
-    {
+        public void actionPerformed(ActionEvent event)
+        {
         JButton clicked = (JButton) event.getSource();
+        //Error same Actionlistener on Jbutton and Jcombobox. 
+        Object source = event.getSource();
         String klikk = clicked.getText();
-        RandomDigit RandDigit = new RandomDigit();
-        PassWord RandStr = new PassWord();
+        RandomDigit RandDigit = new RandomDigit(cmbKeySize.getSelectedIndex());
+        PassWord RandStr = new PassWord(cmbPwSize.getSelectedIndex());
+
 
         switch(klikk)
         {
@@ -107,12 +134,16 @@ public class KeyGenerator extends JFrame implements ActionListener
             break;
 
             case "Copy Nr" :
-            CopyStr = RandomNrTxtField.getText();
+            CopyStr = RandomNrTxtField.getText().replaceAll(", ","");
+            //copy text without spaces.
+            //CopyStr = RandDigit.copyNrToClip();
+            //CopyStr = RandDigit.digitStr;
             copyToClipboard(CopyStr);
             break;
         }
     }
 
+    ///copy to clipoard methode
     public void copyToClipboard(String CopyStr){
         String clip = CopyStr;
         StringSelection stringSelection = new StringSelection(clip);
@@ -120,7 +151,8 @@ public class KeyGenerator extends JFrame implements ActionListener
         clpbrd.setContents(stringSelection, null);
         showMessageDialog(this, "Kopiert til utklippstavlen");
     }
-    
+
+    //main metode to get it run out of Blue J
     public static void main(String[] args) {
         KeyGenerator key = new KeyGenerator();
     }

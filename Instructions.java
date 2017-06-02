@@ -38,8 +38,12 @@ public class Instructions
     public static String tittle(){
         return  
         "<html><h1>Key and password Generator</h1>" + 
-        "<h2>Instructions: </h2><p>Alot of text<p> " + 
-        "Open source, free license<p>Contact: la8koa(at)gmail.com<p><p></html>";
+        "<h2>Instructions: </h2><p>" + 
+        "The Twelve digit key is made to fit the IcyBox Encrypted USB drive<p>" + 
+        "its random and checks if it is a prime number<p>" + 
+        "The PassWord is 15 Characters long and as complex as possible<p>" + 
+        "Open source, free license https://github.com/La8koa/12-Random-Siffer-Salt<p>" +
+        "Contact: la8koa@gmail.com<p><p></html>";
 
     }
     
