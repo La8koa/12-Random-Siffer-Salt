@@ -58,7 +58,7 @@ public class KeyGenerator extends JFrame implements ActionListener
         //how long the digit could get
         cmbKeySize = new JComboBox<Integer>(keySize);
         cmbKeySize.setMaximumRowCount(4);
-        cmbKeySize.setSelectedIndex(2);
+        cmbKeySize.setSelectedIndex(0);
 
         cmbPwSize = new JComboBox<Integer>(pwSize);
         cmbPwSize.setMaximumRowCount(4);
