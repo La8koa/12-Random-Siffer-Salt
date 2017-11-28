@@ -33,7 +33,7 @@ public class RandomDigit
     {
         //block is the length of key choosen by user in KeyGenerator class
         ranArr = new int[block];
-        
+
         for(int i = 0;i<ranArr.length;){
             ranArr[i] = ranDigit();
             i++;

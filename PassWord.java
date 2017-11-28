@@ -35,6 +35,8 @@ public class PassWord {
             break;
             case 2:
             length = 20;
+            case 3:
+            length = 64;
             break;
         }
         

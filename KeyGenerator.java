@@ -18,7 +18,7 @@ public class KeyGenerator extends JFrame implements ActionListener
     private JLabel Jlabauth;
     private String StrTittle;
     private String CopyStr;
-    private Integer[] pwSize = {12, 16, 20};
+    private Integer[] pwSize = {12, 16, 20, 64};
     private Integer[] keySize = {4, 8, 12, 16};
     private JComboBox<Integer> cmbKeySize;
     private JComboBox<Integer> cmbPwSize;
