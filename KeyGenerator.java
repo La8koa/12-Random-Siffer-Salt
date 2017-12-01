@@ -18,7 +18,7 @@ public class KeyGenerator extends JFrame implements ActionListener
     private JLabel Jlabauth;
     private String StrTittle;
     private String CopyStr;
-    private Integer[] pwSize = {12, 16, 20, 64};
+    private Integer[] pwSize = {256, 128, 52, 32, 16};
     private Integer[] keySize = {4, 8, 12, 16};
     private JComboBox<Integer> cmbKeySize;
     private JComboBox<Integer> cmbPwSize;
@@ -62,7 +62,7 @@ public class KeyGenerator extends JFrame implements ActionListener
 
         cmbPwSize = new JComboBox<Integer>(pwSize);
         cmbPwSize.setMaximumRowCount(4);
-        cmbPwSize.setSelectedIndex(1);
+        cmbPwSize.setSelectedIndex(0);
 
         btnGenNewKey.addActionListener(this);
         btnGenPw.addActionListener(this);

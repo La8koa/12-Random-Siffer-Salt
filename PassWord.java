@@ -28,15 +28,19 @@ public class PassWord {
         //length = 16;
         switch(index){
             case 0:
-            length = 12;
+            length = 256;
             break;
             case 1:
-            length = 16;
+            length = 128;
             break;
             case 2:
-            length = 20;
+            length = 52;
+            break;
             case 3:
-            length = 64;
+            length = 32;
+            break;
+            case 4:
+            length = 16;
             break;
         }
         
