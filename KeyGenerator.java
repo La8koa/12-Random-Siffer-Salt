@@ -19,7 +19,7 @@ public class KeyGenerator extends JFrame implements ActionListener
     private String StrTittle;
     private String CopyStr;
     private Integer[] pwSize = {256, 128, 52, 32, 16};
-    private Integer[] keySize = {4, 8, 12, 16};
+    private Integer[] keySize = {16, 12, 8, 4};
     private JComboBox<Integer> cmbKeySize;
     private JComboBox<Integer> cmbPwSize;
     private int cmbKeyInt;
@@ -48,7 +48,7 @@ public class KeyGenerator extends JFrame implements ActionListener
         btnCopyPw = new JButton("Copy pw");
 
         //Label for digit
-        JlabKey = new JLabel("Twelve digit key: ");
+        JlabKey = new JLabel("Sixteen digit key: ");
         RandomNrTxtField = new JTextField(28);
 
         //Label for password

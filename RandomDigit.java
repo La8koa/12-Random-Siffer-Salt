@@ -15,16 +15,16 @@ public class RandomDigit
     public RandomDigit(int index){
         switch(index){
             case 0:
-            block = 1;
+            block = 4;
             break;
             case 1:
-            block = 2;
-            break;
-            case 2:
             block = 3;
             break;
+            case 2:
+            block = 2;
+            break;
             case 3:
-            block = 4;
+            block = 1;
             break;
         }
     }
