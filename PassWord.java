@@ -20,6 +20,7 @@ public class PassWord {
     }   
 
     private final Random random = new Random();
+
     private final char[] buf;
     private int length;
 
@@ -27,22 +28,15 @@ public class PassWord {
         //length = 16;
         switch(index){
             case 0:
-            length = 256;
+            length = 12;
             break;
             case 1:
-            length = 128;
+            length = 16;
             break;
             case 2:
-            length = 64;
-            break;
-            case 3:
-            length = 32;
-            break;
-            case 4: 
             length = 20;
-            break;
-            case 5:
-            length = 16;
+            case 3:
+            length = 64;
             break;
         }
         
@@ -52,16 +46,8 @@ public class PassWord {
     }
     
     public String nextString() {
-        String enterprise = "173467321476C32789777643T732V73117888732476789764376";
-        String starTrek;
-        for (int idx = 0; idx < buf.length; ++idx){ 
-            buf[idx] = symbols[random.nextInt(symbols.length)];  
-        }
-        
-        if(StarTrek(buf).equals(enterprise)){
-            return new String("Starship Enterprise master code entered");
-            }else{
-                return new String(buf);
-        }
+        for (int idx = 0; idx < buf.length; ++idx) 
+            buf[idx] = symbols[random.nextInt(symbols.length)];
+        return new String(buf);
     }
 }
